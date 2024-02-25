@@ -15,8 +15,8 @@ services:
     shm_size: 512mb # for processing the world, I increased this to 16g
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
-    ports:
-      - "http://map-data-coupon-pharm.vbbmcnvdp1-xlm41g78k4dy.p.temp-site.link:5432"
+    expose:
+      - "5432"
     volumes:
       - ./data/postgres_config.sh:/docker-entrypoint-initdb.d/postgres_config.sh
 
@@ -31,5 +31,5 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: "pgadmin4@pgadmin.org"
       PGADMIN_DEFAULT_PASSWORD: "osm"
-    ports:
-      - "http://map-data-coupon-pharm.vbbmcnvdp1-xlm41g78k4dy.p.temp-site.link:5050:80"
+    expose:
+      - "80"
